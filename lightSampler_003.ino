@@ -1,28 +1,35 @@
 /* Light Level Monitor
  *  by Andrew Westfold. (c) April 2016
  *  Uses an i2c RTC, i2c LCD display, Light-dependant Resistor (LDR) and an SD card 
- *  Takes a light sample every 5 minutes for 24 hours.
+ *  Takes a light sample every n minutes for m hours.
+ * Note: this runs entirely in void setup() to prevent in running continuously!
  *  Saves the data to a .csv file on SD card
  *  
- *  Connections:
+ * Connections:
  *  SD Card
- *   D10 - CS
- *   D11 - MOSI
- *   D12 - MISO
- *   D13 - SCK
- *   VCC - VCC
- *   GND - GND
+ *				Nano		SD Card
+ *    D10 - CS
+ *    D11 - MOSI
+ *    D12 - MISO
+ *    D13 - SCK
+ *    VCC - VCC
+ *    GND - GND
  *  i2c RTC
- *   GND - GND
- *   VCC - VCC
- *   A4 - SDA
- *   A5 - SCL
-  *  LDR 
- *   A0 ---0--- 5V
- *   A0 --10k----- GND
+ *    Nano		RTC
+ *    GND - GND
+ *    VCC - VCC
+ *    A4 -  SDA
+ *    A5 -  SCL
+ *  LDR 
+ *    5v ---0--- A0 ---10k--- GND
  * 
- * Set runTime to adjust running time 
+ * Set runTime to adjust running time (Time to run = runTime * sampleRate)
  * Set sampleRate to adjust sample time
+ *
+ * NOTE: Runs fine when Arduino Nano connected to Laptop via USB, but SD card doesnt work from batteries.
+ *       Potential 3.3v/5v supply issue?
+ *
+ * Could comment out all Serial. statements when running 'off-laptop'
 */
 
 #include <SPI.h>
@@ -37,10 +44,13 @@ int sampleRate = 600000; // 300000 = sample once every 5 mins 900000 = 15 mins
 int runTime = 144; //Calculated by Time to run divided by sample rate
 File myfile;
 
+/*
 byte decToBcd(byte val)// Convert decimal numbers to binary coded decimal
+//Not used - a hangover from having to set the time on the RTC
 {
      return((val/10*16) + (val%10));
 }
+*/
 
 byte bcdToDec(byte val)// Convert binary coded decimal to decimal
 {
@@ -123,8 +133,6 @@ void setup()
      Serial.println("All Data written to card!");   //Indicate that all is complete
 }
 
-
 void loop()
 {
-     
 }
