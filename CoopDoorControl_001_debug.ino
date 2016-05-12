@@ -37,10 +37,10 @@ int in2 = 8;
 //Override buttons
 int openButn = 2;
 int closeButn = 3;
-//Dorr position sensors
+//Door position sensors
 int openSens = 4;
 int closeSens = 5;
-//LDF sensor
+//LDR sensor
 int ldrPin = A0;
 //declare variables
 volatile int lastState;
