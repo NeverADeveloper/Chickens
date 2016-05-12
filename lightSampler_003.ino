@@ -44,14 +44,6 @@ int sampleRate = 600000; // 300000 = sample once every 5 mins 900000 = 15 mins
 int runTime = 144; //Calculated by Time to run divided by sample rate
 File myfile;
 
-/*
-byte decToBcd(byte val)// Convert decimal numbers to binary coded decimal
-//Not used - a hangover from having to set the time on the RTC
-{
-     return((val/10*16) + (val%10));
-}
-*/
-
 byte bcdToDec(byte val)// Convert binary coded decimal to decimal
 {
      return((val/16*10) + (val%16));
