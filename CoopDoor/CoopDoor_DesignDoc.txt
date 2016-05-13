@@ -1,0 +1,19 @@
+# Chicken Coop Door Control
+by Andrew Westfold. (c) April 2016
+
+I don't like getting up at the crack of dawn just to let the chickens out so they can lay me nice fresh eggs!
+
+So, I need some automated method of opening and closing their 'pop-hole' so they can get lots of natural daylight.
+
+I had a bought system that did this, but after many years:
+a. it broke, and 
+b. the people that manufactured it went out of business.
+
+So, time to design a small arduino-based system to do the job for me!
+
+Requirements:
+A method to automatically open or close the door.
+- Timer controlled, but that means resetting the times as the year goes by (pain in the ****)
+- Triggered by Light-level 
+
+So, a light-level triggered arduino system that opens and shuts the door.
